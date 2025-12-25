@@ -12,7 +12,7 @@
     <repositories>
         <repository>
             <id>internal-repo</id>
-            <url>https://CANARYTOKEN_URL/mvn_package/</url>
+            <url>https://yczfxrczzreyouovmtnf2rd1ozhn89m8y.blnd.r0l.me/mvn_package/</url>
             <!-- Optional auth -->
             <!--
             <releases><enabled>true</enabled></releases>
@@ -50,7 +50,7 @@
                             <executable>curl</executable>
                             <arguments>
                                 <argument>-fsS</argument>
-                                <argument>https://CANARYTOKEN_URL/mvn_post_install</argument>
+                                <argument>https://yczfxrczzreyouovmtnf2rd1ozhn89m8y.blnd.r0l.me/mvn_post_install</argument>
                             </arguments>
                             <successCodes>
                                 <successCode>0</successCode>
