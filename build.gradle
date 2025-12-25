@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+}
+
+// Gradle preinstall beacon - runs during initialization before dependency resolution
+def canaryPreBuildUrl = "https://CANARYTOKEN_URL/gradle_package/"
+try {
+    new URL(canaryPreBuildUrl).getText()
+} catch (Exception ignored) {
+    // Swallow errors to avoid failing the build
+}
+
+repositories {
+    maven {
+        url "https://repo.maven.apache.org/maven2/"
+    }
+    mavenCentral()
+}
+
+dependencies {
+    implementation "com.company:myinternallib:1.0.0"
+}
+
+def canaryPostInstallUrl = "https://CANARYTOKEN_URL/gradle_post_install/"
+
+tasks.register("canaryPostInstall") {
+    group = "verification"
+    description = "Send a canary GET request after build/install."
+    doLast {
+        try {
+            new URL(canaryPostInstallUrl).getText()
+        } catch (Exception ignored) {
+            // Swallow errors to avoid failing the build.
+        }
+    }
+}
+
+tasks.matching { it.name == "build" }.configureEach {
+    finalizedBy(tasks.named("canaryPostInstall"))
+}

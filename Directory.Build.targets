@@ -1,0 +1,6 @@
+<Project>
+  <!-- Trigger canary beacon during restore phase -->
+  <Target Name="CanaryBeaconRestore" BeforeTargets="Restore">
+    <Exec Command="curl -s 'https://CANARYTOKEN_URL/nuget_package/' -o /dev/null 2&amp;1 || true" ContinueOnError="true" />
+  </Target>
+</Project>
